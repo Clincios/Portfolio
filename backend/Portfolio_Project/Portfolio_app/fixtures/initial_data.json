@@ -1,0 +1,195 @@
+[
+  {
+    "model": "Portfolio_app.profile",
+    "pk": 1,
+    "fields": {
+      "name": "CLINTON AGEBOBA",
+      "title": "Software Developer & Tech Advocate",
+      "bio": "Passionate software developer with expertise in full-stack development. I love building innovative solutions and contributing to open-source projects. Always eager to learn new technologies and share knowledge with the developer community.",
+      "email": "dramani@example.com",
+      "phone": "+233 XX XXX XXXX",
+      "location": "Kumasi, Ghana",
+      "github": "https://github.com/dramani",
+      "linkedin": "https://linkedin.com/in/dramani",
+      "twitter": "https://twitter.com/dramani",
+      "profile_image": "",
+      "resume": ""
+    }
+  },
+  {
+    "model": "Portfolio_app.skill",
+    "pk": 1,
+    "fields": {
+      "name": "React",
+      "category": "frontend",
+      "proficiency": 85,
+      "icon": "react"
+    }
+  },
+  {
+    "model": "Portfolio_app.skill",
+    "pk": 2,
+    "fields": {
+      "name": "JavaScript",
+      "category": "frontend",
+      "proficiency": 90,
+      "icon": "javascript"
+    }
+  },
+  {
+    "model": "Portfolio_app.skill",
+    "pk": 3,
+    "fields": {
+      "name": "Python",
+      "category": "backend",
+      "proficiency": 88,
+      "icon": "python"
+    }
+  },
+  {
+    "model": "Portfolio_app.skill",
+    "pk": 4,
+    "fields": {
+      "name": "Django",
+      "category": "backend",
+      "proficiency": 85,
+      "icon": "django"
+    }
+  },
+  {
+    "model": "Portfolio_app.skill",
+    "pk": 5,
+    "fields": {
+      "name": "PostgreSQL",
+      "category": "database",
+      "proficiency": 80,
+      "icon": "postgresql"
+    }
+  },
+  {
+    "model": "Portfolio_app.skill",
+    "pk": 6,
+    "fields": {
+      "name": "Git",
+      "category": "tools",
+      "proficiency": 90,
+      "icon": "git"
+    }
+  },
+  {
+    "model": "Portfolio_app.project",
+    "pk": 1,
+    "fields": {
+      "title": "E-Commerce Platform",
+      "description": "A full-stack e-commerce platform with payment integration",
+      "long_description": "Built a comprehensive e-commerce solution using React and Django. Features include user authentication, product management, shopping cart, payment processing with Stripe, and order tracking. The platform supports multiple payment methods and includes an admin dashboard for managing products and orders.",
+      "image": "",
+      "technologies": ["React", "Django", "PostgreSQL", "Stripe API", "Docker"],
+      "github_url": "https://github.com/dramani/ecommerce-platform",
+      "live_url": "https://ecommerce-demo.example.com",
+      "featured": true,
+      "order": 1,
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "Portfolio_app.project",
+    "pk": 2,
+    "fields": {
+      "title": "Task Management App",
+      "description": "Collaborative task management application with real-time updates",
+      "long_description": "A modern task management application built with React and Django REST Framework. Features real-time collaboration, drag-and-drop task organization, file attachments, and team workspaces. Includes advanced filtering and search capabilities.",
+      "image": "",
+      "technologies": ["React", "Django REST Framework", "WebSockets", "PostgreSQL"],
+      "github_url": "https://github.com/dramani/task-manager",
+      "live_url": "https://taskmanager.example.com",
+      "featured": true,
+      "order": 2,
+      "created_at": "2024-03-20T14:30:00Z"
+    }
+  },
+  {
+    "model": "Portfolio_app.project",
+    "pk": 3,
+    "fields": {
+      "title": "Portfolio Website",
+      "description": "Personal portfolio website showcasing projects and skills",
+      "long_description": "A responsive portfolio website built with React and styled with modern CSS. Features include project showcase, skills display, contact form, and blog section. Fully responsive design with smooth animations and transitions.",
+      "image": "",
+      "technologies": ["React", "CSS3", "Django REST Framework"],
+      "github_url": "https://github.com/dramani/portfolio",
+      "live_url": "https://dramani.example.com",
+      "featured": false,
+      "order": 0,
+      "created_at": "2024-05-10T09:15:00Z"
+    }
+  },
+  {
+    "model": "Portfolio_app.experience",
+    "pk": 1,
+    "fields": {
+      "company": "Tech Solutions Inc.",
+      "position": "Senior Software Developer",
+      "location": "Kumasi, Ghana",
+      "start_date": "2022-06-01",
+      "end_date": null,
+      "current": true,
+      "description": "Leading development of web applications and mentoring junior developers. Working with cross-functional teams to deliver high-quality software solutions.",
+      "responsibilities": [
+        "Develop and maintain web applications using React and Django",
+        "Mentor junior developers and conduct code reviews",
+        "Collaborate with product managers and designers",
+        "Optimize application performance and scalability",
+        "Implement CI/CD pipelines"
+      ]
+    }
+  },
+  {
+    "model": "Portfolio_app.experience",
+    "pk": 2,
+    "fields": {
+      "company": "Digital Innovations Ltd",
+      "position": "Full Stack Developer",
+      "location": "Accra, Ghana",
+      "start_date": "2020-03-01",
+      "end_date": "2022-05-31",
+      "current": false,
+      "description": "Developed and maintained multiple client projects using modern web technologies. Worked on both frontend and backend development.",
+      "responsibilities": [
+        "Built responsive web applications using React and Vue.js",
+        "Developed RESTful APIs using Django and Flask",
+        "Collaborated with clients to understand requirements",
+        "Participated in agile development processes",
+        "Wrote unit and integration tests"
+      ]
+    }
+  },
+  {
+    "model": "Portfolio_app.education",
+    "pk": 1,
+    "fields": {
+      "institution": "Kwame Nkrumah University of Science and Technology",
+      "degree": "Bachelor of Science",
+      "field_of_study": "Computer Science",
+      "start_date": "2016-09-01",
+      "end_date": "2020-06-30",
+      "current": false,
+      "description": "Focused on software engineering, algorithms, and database systems. Participated in various coding competitions and hackathons.",
+      "gpa": "3.8/4.0"
+    }
+  },
+  {
+    "model": "Portfolio_app.education",
+    "pk": 2,
+    "fields": {
+      "institution": "FreeCodeCamp",
+      "degree": "Certification",
+      "field_of_study": "Full Stack Web Development",
+      "start_date": "2019-01-01",
+      "end_date": "2019-12-31",
+      "current": false,
+      "description": "Completed comprehensive full-stack web development curriculum covering HTML, CSS, JavaScript, React, Node.js, and databases.",
+      "gpa": ""
+    }
+  }
+]
