@@ -1,3 +1,0 @@
-web: cd Portfolio_Project && gunicorn --bind 0.0.0.0:$PORT --workers 3 Portfolio_Project.wsgi:application
-release: cd Portfolio_Project && python manage.py migrate && python manage.py collectstatic --noinput
-

@@ -1,0 +1,599 @@
+/* Portfolio Admin Custom Styles - Matching Website Theme */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Global Styles */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    background: linear-gradient(to bottom right, #f5f3ff 0%, #ede9fe 25%, #f0f9ff 50%, #f1f5f9 100%) !important;
+}
+
+/* Brand/Header Styling */
+.brand-link {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%) !important;
+    border-bottom: none !important;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3) !important;
+}
+
+.brand-link .brand-text {
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+}
+
+/* Sidebar Enhancements */
+.main-sidebar {
+    background: linear-gradient(180deg, #312e81 0%, #1e1b4b 100%) !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.sidebar-dark-indigo .nav-sidebar > .nav-item > .nav-link.active {
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%) !important;
+    border-radius: 8px;
+    margin: 0 8px;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.sidebar-dark-indigo .nav-sidebar .nav-link {
+    border-radius: 8px;
+    margin: 2px 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-dark-indigo .nav-sidebar .nav-link:hover {
+    background: rgba(99, 102, 241, 0.2) !important;
+}
+
+/* Navbar Enhancement */
+.navbar-indigo {
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%) !important;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.25) !important;
+    border-bottom: none !important;
+}
+
+/* Content Area */
+.content-wrapper {
+    background: transparent !important;
+    padding: 1.5rem !important;
+}
+
+.content-header {
+    margin-bottom: 1.5rem !important;
+}
+
+.content-header h1 {
+    font-size: 1.75rem !important;
+    font-weight: 800 !important;
+    color: #1e293b !important;
+    margin: 0 !important;
+}
+
+/* Card Styling */
+.card {
+    border: none !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background: transparent !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    font-weight: 600;
+    padding: 1.25rem 1.5rem !important;
+}
+
+.card-body {
+    padding: 1.5rem !important;
+}
+
+/* Dashboard Stats Cards - Hidden (using custom cards) */
+.small-box {
+    display: none !important;
+}
+
+/* Color variants for stats */
+.bg-info {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%) !important;
+}
+
+.bg-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+}
+
+.bg-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+}
+
+.bg-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+
+.bg-primary {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+}
+
+.bg-secondary {
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%) !important;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    padding: 0.625rem 1.25rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+    border: none !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+    border: none !important;
+}
+
+/* Tables */
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background: #f1f5f9 !important;
+    border: none !important;
+    font-weight: 600 !important;
+    color: #475569 !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 1rem !important;
+}
+
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background: #f8fafc !important;
+}
+
+.table tbody td {
+    padding: 1rem !important;
+    vertical-align: middle;
+    border-color: #e2e8f0 !important;
+}
+
+/* Form Styling */
+.form-control {
+    border-radius: 10px !important;
+    border: 2px solid #e2e8f0 !important;
+    padding: 0.75rem 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-control:focus {
+    border-color: #6366f1 !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem !important;
+}
+
+/* Labels */
+label {
+    font-weight: 500 !important;
+    color: #374151 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Fieldsets */
+fieldset {
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+fieldset legend {
+    font-weight: 600 !important;
+    color: #6366f1 !important;
+    padding: 0 0.75rem !important;
+    font-size: 1rem !important;
+}
+
+/* Tabs */
+.nav-tabs {
+    border: none !important;
+    background: #f1f5f9;
+    border-radius: 12px;
+    padding: 0.5rem;
+}
+
+.nav-tabs .nav-link {
+    border: none !important;
+    border-radius: 8px !important;
+    color: #64748b !important;
+    font-weight: 500 !important;
+    padding: 0.75rem 1.25rem !important;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    background: rgba(99, 102, 241, 0.1) !important;
+    color: #6366f1 !important;
+}
+
+.nav-tabs .nav-link.active {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.breadcrumb-item a {
+    color: #6366f1 !important;
+    font-weight: 500;
+}
+
+.breadcrumb-item.active {
+    color: #64748b !important;
+}
+
+/* Alerts */
+.alert {
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 1rem 1.25rem !important;
+}
+
+.alert-success {
+    background: #ecfdf5 !important;
+    color: #065f46 !important;
+}
+
+.alert-info {
+    background: #eff6ff !important;
+    color: #1e40af !important;
+}
+
+.alert-warning {
+    background: #fffbeb !important;
+    color: #92400e !important;
+}
+
+.alert-danger {
+    background: #fef2f2 !important;
+    color: #991b1b !important;
+}
+
+/* Pagination */
+.pagination .page-link {
+    border: none !important;
+    border-radius: 8px !important;
+    margin: 0 2px;
+    color: #64748b !important;
+    font-weight: 500;
+}
+
+.pagination .page-item.active .page-link {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    color: white !important;
+}
+
+/* Search Box */
+.input-group .form-control {
+    border-radius: 10px 0 0 10px !important;
+}
+
+.input-group .btn {
+    border-radius: 0 10px 10px 0 !important;
+}
+
+/* Login Page Styling */
+.login-page {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%) !important;
+}
+
+.login-box .card {
+    border-radius: 20px !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25) !important;
+}
+
+.login-card-body {
+    padding: 2.5rem !important;
+}
+
+.login-box-msg {
+    font-weight: 600 !important;
+    color: #374151 !important;
+    font-size: 1.1rem !important;
+}
+
+/* Footer */
+.main-footer {
+    background: white !important;
+    border-top: 1px solid #e2e8f0 !important;
+    color: #64748b !important;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+/* Badge Styling */
+.badge {
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    padding: 0.35rem 0.65rem !important;
+}
+
+.badge-primary {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+}
+
+.badge-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+}
+
+.badge-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%) !important;
+    color: white !important;
+}
+
+.badge-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+
+/* Action Icons */
+.object-tools a {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+    font-weight: 500 !important;
+}
+
+/* Checkbox & Radio Styling */
+input[type="checkbox"],
+input[type="radio"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: #6366f1;
+}
+
+/* Help Text */
+.help-block {
+    color: #64748b !important;
+    font-size: 0.85rem !important;
+    margin-top: 0.25rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #94a3b8;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Animation for hover effects */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.nav-icon {
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover .nav-icon {
+    transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .small-box h3 {
+        font-size: 1.8rem !important;
+    }
+    
+    .card {
+        border-radius: 12px !important;
+    }
+}
+
+/* User Panel Enhancement */
+.user-panel .info a {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500 !important;
+}
+
+.user-panel .image img {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Related Widget Styling */
+.related-widget-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.related-widget-wrapper .form-control {
+    flex: 1;
+}
+
+/* JSONField Styling */
+.vLargeTextField,
+textarea.vLargeTextField {
+    font-family: 'Monaco', 'Consolas', monospace !important;
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    background: #f8fafc !important;
+}
+
+/* Admin Index Dashboard */
+.dashboard-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Module Caption */
+caption {
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    font-size: 1.1rem !important;
+    padding: 1rem 0 !important;
+}
+
+/* Reduce text in admin */
+.module h2 a,
+.module h2 {
+    font-size: 0.875rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.module table th {
+    font-size: 0.7rem !important;
+    padding: 0.75rem 1rem !important;
+}
+
+.module table td {
+    font-size: 0.875rem !important;
+    padding: 0.75rem 1rem !important;
+}
+
+/* Simplify breadcrumbs */
+.breadcrumb {
+    font-size: 0.85rem !important;
+}
+
+.breadcrumb-item {
+    color: #64748b !important;
+}
+
+/* Reduce welcome text */
+.welcome-message {
+    display: none !important;
+}
+
+/* Compact forms */
+.form-row {
+    margin-bottom: 0.75rem !important;
+}
+
+.form-row label {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.25rem !important;
+}
+
+/* Icon-only buttons where possible */
+.object-tools a {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1rem !important;
+}
+
+/* Compact pagination */
+.pagination {
+    font-size: 0.875rem !important;
+}
+
+/* Action buttons */
+.action-checkbox {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+}
+
+/* Compact filters */
+.filter-list {
+    font-size: 0.875rem !important;
+}
+
+/* Reduce help text */
+.help-block,
+.help {
+    font-size: 0.8rem !important;
+    color: #94a3b8 !important;
+    margin-top: 0.25rem !important;
+}
+
+/* Compact field labels */
+.field-label {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+}
+
+/* Dashboard specific */
+.dashboard-stats {
+    margin-bottom: 2rem !important;
+}
+
+/* Module table compact */
+.module table {
+    font-size: 0.875rem !important;
+}
+
+.module table caption {
+    font-size: 0.875rem !important;
+    padding: 0.75rem 0 !important;
+}
+

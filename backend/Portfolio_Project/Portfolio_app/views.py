@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from .models import Profile, Skill, Project, Experience, Education, Contact
 from .serializers import (
     ProfileSerializer, SkillSerializer, ProjectSerializer,
@@ -31,3 +32,5 @@ class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     http_method_names = ['post']
+    throttle_classes = [AnonRateThrottle]
+    throttle_scope = 'contact'  # Uses the stricter 'contact' rate limit (5/hour)
