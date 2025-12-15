@@ -44,7 +44,7 @@ Make sure all your changes are committed and pushed to your Git repository.
      ```
    - **Start Command**:
      ```bash
-     cd Portfolio_Project && gunicorn Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT
+     gunicorn Portfolio_Project.Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT
      ```
 
 ### 4. Configure Environment Variables
@@ -188,3 +188,4 @@ VITE_BACKEND_URL=https://your-app-name.onrender.com
 - Render Documentation: https://render.com/docs
 - Render Community: https://community.render.com
 - Django Deployment: https://docs.djangoproject.com/en/stable/howto/deployment/
+

@@ -3,7 +3,7 @@ services:
     name: portfolio-backend
     env: python
     buildCommand: chmod +x build.sh && ./build.sh
-    startCommand: cd Portfolio_Project && gunicorn Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT
+    startCommand: gunicorn Portfolio_Project.Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.0

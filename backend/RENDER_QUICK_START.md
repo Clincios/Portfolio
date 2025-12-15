@@ -13,7 +13,7 @@
 - Connect your Git repository
 - **Root Directory**: `backend`
 - **Build Command**: `chmod +x build.sh && ./build.sh`
-- **Start Command**: `cd Portfolio_Project && gunicorn Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT`
+- **Start Command**: `gunicorn Portfolio_Project.Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT`
 
 ### 3. Set Environment Variables
 
@@ -68,3 +68,4 @@ VITE_BACKEND_URL=https://your-app-name.onrender.com
 - **500 errors**: Check application logs, verify DEBUG=False
 
 See `RENDER_DEPLOYMENT.md` for detailed instructions.
+
