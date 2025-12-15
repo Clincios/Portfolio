@@ -44,7 +44,7 @@ Make sure all your changes are committed and pushed to your Git repository.
      ```
    - **Start Command**:
      ```bash
-     gunicorn Portfolio_Project.Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT
+     cd Portfolio_Project && gunicorn Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT
      ```
 
 ### 4. Configure Environment Variables

@@ -13,7 +13,7 @@
 - Connect your Git repository
 - **Root Directory**: `backend`
 - **Build Command**: `chmod +x build.sh && ./build.sh`
-- **Start Command**: `gunicorn Portfolio_Project.Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT`
+- **Start Command**: `cd Portfolio_Project && gunicorn Portfolio_Project.wsgi:application --bind 0.0.0.0:$PORT`
 
 ### 3. Set Environment Variables
 
