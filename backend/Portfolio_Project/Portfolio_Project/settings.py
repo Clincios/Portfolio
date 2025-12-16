@@ -194,8 +194,19 @@ DATABASE_URL = config('DATABASE_URL', default=None)
 
 if DATABASE_URL:
     # Production: Use PostgreSQL from DATABASE_URL (Render provides this)
+    # Parse database URL with SSL support for external connections
+    db_config = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+    
+    # Ensure SSL is required for external database connections (cross-account)
+    # This is required when connecting to databases in different Render accounts
+    if 'OPTIONS' not in db_config:
+        db_config['OPTIONS'] = {}
+    
+    # Require SSL for secure connections (especially for cross-account)
+    db_config['OPTIONS']['sslmode'] = 'require'
+    
     DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+        'default': db_config
     }
 else:
     # Development: Use SQLite
@@ -255,7 +266,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # CORS settings - Security: Only allow specific frontend origins
 # Set CORS_ALLOWED_ORIGINS environment variable as comma-separated list
 # Example: CORS_ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
-CORS_ALLOWED_ORIGINS_ENV = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173')
+CORS_ALLOWED_ORIGINS_ENV = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173,https://clinton-ageboba-portfolio.netlify.app')
 CORS_ALLOWED_ORIGINS = [
     origin.strip() for origin in CORS_ALLOWED_ORIGINS_ENV.split(',') if origin.strip()
 ]
