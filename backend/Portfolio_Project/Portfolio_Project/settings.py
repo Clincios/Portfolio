@@ -195,15 +195,20 @@ DATABASE_URL = config('DATABASE_URL', default=None)
 if DATABASE_URL:
     # Production: Use PostgreSQL from DATABASE_URL (Render provides this)
     # Parse database URL with SSL support for external connections
+    # Check if sslmode is already in the URL
+    database_url_str = str(DATABASE_URL)
+    has_ssl_in_url = 'sslmode' in database_url_str.lower()
+    
+    # Parse the database URL
     db_config = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     
     # Ensure SSL is required for external database connections (cross-account)
     # This is required when connecting to databases in different Render accounts
-    if 'OPTIONS' not in db_config:
-        db_config['OPTIONS'] = {}
-    
-    # Require SSL for secure connections (especially for cross-account)
-    db_config['OPTIONS']['sslmode'] = 'require'
+    if not has_ssl_in_url:
+        # SSL not in URL, add it to OPTIONS
+        if 'OPTIONS' not in db_config:
+            db_config['OPTIONS'] = {}
+        db_config['OPTIONS']['sslmode'] = 'require'
     
     DATABASES = {
         'default': db_config
@@ -306,6 +311,7 @@ REST_FRAMEWORK = {
     },
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
 }
 
 # Security Headers Configuration
