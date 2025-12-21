@@ -17,6 +17,9 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ExperienceSerializer(serializers.ModelSerializer):
+    # Add 'title' as an alias for 'position' for frontend compatibility
+    title = serializers.CharField(source='position', read_only=True)
+    
     class Meta:
         model = Experience
         fields = '__all__'

@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,14 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-dev-key-change-in-production')
+SECRET_KEY = 'django-insecure-dev-key-change-in-production'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
 
-# Allowed hosts - set via environment variable in production
-ALLOWED_HOSTS_ENV = config('ALLOWED_HOSTS', default='localhost,127.0.0.1')
-ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_ENV.split(',') if host.strip()]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']  # Allow all hosts in development
 
 
 # Application definition
@@ -154,7 +150,6 @@ JAZZMIN_UI_TWEAKS = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Serve static files in production
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -188,39 +183,12 @@ WSGI_APPLICATION = 'Portfolio_Project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# Use DATABASE_URL environment variable (Render provides this automatically)
-# Falls back to SQLite for local development
-DATABASE_URL = config('DATABASE_URL', default=None)
-
-if DATABASE_URL:
-    # Production: Use PostgreSQL from DATABASE_URL (Render provides this)
-    # Parse database URL with SSL support for external connections
-    # Check if sslmode is already in the URL
-    database_url_str = str(DATABASE_URL)
-    has_ssl_in_url = 'sslmode' in database_url_str.lower()
-    
-    # Parse the database URL
-    db_config = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
-    
-    # Ensure SSL is required for external database connections (cross-account)
-    # This is required when connecting to databases in different Render accounts
-    if not has_ssl_in_url:
-        # SSL not in URL, add it to OPTIONS
-        if 'OPTIONS' not in db_config:
-            db_config['OPTIONS'] = {}
-        db_config['OPTIONS']['sslmode'] = 'require'
-    
-    DATABASES = {
-        'default': db_config
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    # Development: Use SQLite
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 
 # Password validation
@@ -261,22 +229,12 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# WhiteNoise configuration for serving static files in production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 # Media files (user uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# CORS settings - Security: Only allow specific frontend origins
-# Set CORS_ALLOWED_ORIGINS environment variable as comma-separated list
-# Example: CORS_ALLOWED_ORIGINS=http://localhost:3000,https://yourdomain.com
-CORS_ALLOWED_ORIGINS_ENV = config('CORS_ALLOWED_ORIGINS', default='http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000,http://127.0.0.1:5173,https://clinton-ageboba-portfolio.netlify.app')
-CORS_ALLOWED_ORIGINS = [
-    origin.strip() for origin in CORS_ALLOWED_ORIGINS_ENV.split(',') if origin.strip()
-]
-
-# Additional CORS security settings
+# CORS settings - Development: Allow all origins
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = [
     'DELETE',
@@ -314,31 +272,30 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
 }
 
-# Security Headers Configuration
-# Note: Some settings should only be enabled in production (when DEBUG=False and HTTPS is available)
-# Use environment variables to control these in production
+# Security Headers Configuration - Development mode
+# These are disabled for development
 
-# SSL/HTTPS Security (only enable in production with HTTPS)
-SECURE_SSL_REDIRECT = config('SECURE_SSL_REDIRECT', default=False, cast=bool)
-SECURE_HSTS_SECONDS = config('SECURE_HSTS_SECONDS', default=31536000, cast=int)  # 1 year
-SECURE_HSTS_INCLUDE_SUBDOMAINS = config('SECURE_HSTS_INCLUDE_SUBDOMAINS', default=True, cast=bool)
-SECURE_HSTS_PRELOAD = config('SECURE_HSTS_PRELOAD', default=True, cast=bool)
+# SSL/HTTPS Security
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_SECONDS = 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False
 
 # Content Security
-SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME type sniffing
-SECURE_BROWSER_XSS_FILTER = True  # Enable browser's XSS filter
+SECURE_CONTENT_TYPE_NOSNIFF = False
+SECURE_BROWSER_XSS_FILTER = False
 
-# Frame Options (prevent clickjacking)
-X_FRAME_OPTIONS = 'DENY'  # Prevent page from being displayed in a frame
+# Frame Options
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Referrer Policy
-SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+SECURE_REFERRER_POLICY = None
 
-# Cookie Security (only enable in production with HTTPS)
-SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE', default=False, cast=bool)
-CSRF_COOKIE_SECURE = config('CSRF_COOKIE_SECURE', default=False, cast=bool)
-SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript access to session cookie
-CSRF_COOKIE_HTTPONLY = True  # Prevent JavaScript access to CSRF cookie
+# Cookie Security
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -13,6 +13,7 @@ from .serializers import (
 class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    pagination_class = None  # Disable pagination for profile
     
     def get_queryset(self):
         """Get queryset with error handling"""
@@ -43,6 +44,7 @@ class ProfileViewSet(viewsets.ReadOnlyModelViewSet):
 class SkillViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Skill.objects.all()
     serializer_class = SkillSerializer
+    pagination_class = None  # Disable pagination for skills
     
     def get_queryset(self):
         try:
@@ -69,6 +71,7 @@ class SkillViewSet(viewsets.ReadOnlyModelViewSet):
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    pagination_class = None  # Disable pagination for projects
     
     def get_queryset(self):
         try:
@@ -95,6 +98,7 @@ class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
 class ExperienceViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Experience.objects.all()
     serializer_class = ExperienceSerializer
+    pagination_class = None  # Disable pagination for experience
     
     def get_queryset(self):
         try:
@@ -121,6 +125,7 @@ class ExperienceViewSet(viewsets.ReadOnlyModelViewSet):
 class EducationViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
+    pagination_class = None  # Disable pagination for education
     
     def get_queryset(self):
         try:
