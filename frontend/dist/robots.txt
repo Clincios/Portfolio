@@ -1,0 +1,14 @@
+# robots.txt for Clinton Ageboba Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://clintonageboba.netlify.app/sitemap.xml
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all other content
+Allow: /
+

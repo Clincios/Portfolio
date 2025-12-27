@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, ExternalLink, Code, Briefcase, GraduationCap, Send, Menu, X, ChevronDown, Building2, Calendar } from 'lucide-react';
 import { portfolioAPI, getMediaUrl } from './services/api';
@@ -457,6 +458,27 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-indigo-50 to-slate-50 text-gray-900">
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>{displayProfile.name ? `${displayProfile.name} | Software Developer & Web Engineer` : 'Clinton Ageboba | Software Developer & Web Engineer'}</title>
+        <meta name="description" content={displayProfile.bio || displayProfile.about || 'Clinton Ageboba is a software developer specializing in modern web applications, portfolio projects, and scalable solutions.'} />
+        <meta name="keywords" content={`Clinton Ageboba, ${displayProfile.name}, software developer, web developer, software engineer, portfolio, React, Django, full-stack developer, web applications, ${(displayProfile.title || '').toLowerCase()}`} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={displayProfile.name ? `${displayProfile.name} | Software Developer & Web Engineer` : 'Clinton Ageboba | Software Developer & Web Engineer'} />
+        <meta property="og:description" content={displayProfile.bio || displayProfile.about || 'Clinton Ageboba is a software developer specializing in modern web applications, portfolio projects, and scalable solutions.'} />
+        <meta property="og:url" content="https://clintonageboba.netlify.app/" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={displayProfile.name ? `${displayProfile.name} | Software Developer & Web Engineer` : 'Clinton Ageboba | Software Developer & Web Engineer'} />
+        <meta name="twitter:description" content={displayProfile.bio || displayProfile.about || 'Clinton Ageboba is a software developer specializing in modern web applications, portfolio projects, and scalable solutions.'} />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://clintonageboba.netlify.app/" />
+      </Helmet>
+      
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 pointer-events-none">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pointer-events-auto">
@@ -519,7 +541,7 @@ const Portfolio = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Home</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 sm:mb-4 text-indigo-700 tracking-tight leading-tight px-2">
-            {displayProfile.name}
+            {displayProfile.name || 'Clinton Ageboba'} – Software Developer
           </h1>
           <p className="text-base sm:text-lg md:text-xl font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-3 sm:mb-4 typewriter px-2">
             SOFTWARE ENGINEER
@@ -568,6 +590,17 @@ const Portfolio = () => {
             <div className="w-12 sm:w-16 h-1 sm:h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full mx-auto"></div>
           </div>
           
+          {/* SEO Content - Hidden visually but readable by search engines */}
+          <div className="sr-only">
+            <p>
+              I am Clinton Ageboba, a software developer focused on building efficient, scalable, and user-friendly web applications. 
+              I work with modern technologies including React, Django, Python, and JavaScript to deliver solutions for individuals, 
+              startups, and organizations. My expertise spans full-stack development, creating responsive web applications, and 
+              implementing robust backend systems. I specialize in developing portfolio websites, web applications, and scalable 
+              software solutions that meet client needs and business objectives.
+            </p>
+          </div>
+          
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
             {/* About Text Card */}
             <div className="bg-white/90 backdrop-blur-xl rounded-2xl sm:rounded-[28px] shadow-2xl border border-indigo-100 px-4 sm:px-6 md:px-10 py-6 sm:py-8 md:py-10">
@@ -582,9 +615,22 @@ const Portfolio = () => {
                   <p className="text-sm text-indigo-600 font-medium">{displayProfile.title}</p>
                 </div>
               </div>
-              <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-                {displayProfile.about || displayProfile.bio}
-              </p>
+              <div className="text-gray-700 leading-relaxed text-base md:text-lg space-y-4">
+                <p>
+                  {displayProfile.about || displayProfile.bio}
+                </p>
+                <p>
+                  I am a software developer focused on building efficient, scalable, and user-friendly web applications. 
+                  I work with modern technologies including React, Django, Python, and JavaScript to deliver solutions 
+                  for individuals, startups, and organizations. My expertise spans full-stack development, creating 
+                  responsive web applications, and implementing robust backend systems.
+                </p>
+                <p>
+                  I specialize in developing portfolio websites, web applications, and scalable software solutions that 
+                  meet client needs and business objectives. Whether you're a recruiter looking for talent, a business 
+                  seeking development services, or a student interested in learning, I'm here to help bring your ideas to life.
+                </p>
+              </div>
             </div>
 
             {/* Contact Information Card */}
