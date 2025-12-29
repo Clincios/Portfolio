@@ -3,6 +3,8 @@ from django.utils.html import format_html
 from django.db.models import Count
 from django.template.response import TemplateResponse
 from django.urls import path
+from django import forms
+from django.forms.widgets import ClearableFileInput
 from .models import Profile, Skill, Project, Experience, Education, Contact
 
 
@@ -12,8 +14,24 @@ admin.site.site_title = "Portfolio Admin"
 admin.site.index_title = "Dashboard"
 
 
+class ProfileAdminForm(forms.ModelForm):
+    """
+    Custom form to make it very clear that the admin can
+    change or completely clear the profile image and resume.
+    """
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+        widgets = {
+            'profile_image': ClearableFileInput,
+            'resume': ClearableFileInput,
+        }
+
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
+    form = ProfileAdminForm
     list_display = ['name', 'title', 'email_display', 'location', 'social_links']
     readonly_fields = ['profile_preview']
     

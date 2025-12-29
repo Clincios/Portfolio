@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, useInView } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, ExternalLink, Code, Briefcase, GraduationCap, Send, Menu, X, ChevronDown, Building2, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter, ExternalLink, Code, Briefcase, GraduationCap, Send, Menu, X, ChevronDown, Building2, Calendar, Download } from 'lucide-react';
 import { portfolioAPI, getMediaUrl } from './services/api';
 
 const DetailBlock = ({ title, content }) => {
@@ -443,6 +443,10 @@ const Portfolio = () => {
     setSelectedProject(null);
   };
 
+  // Media URLs for profile-specific assets
+  const profileImageUrl = profile?.profile_image ? getMediaUrl(profile.profile_image) : null;
+  const resumeUrl = profile?.resume ? getMediaUrl(profile.resume) : null;
+
   // Default profile data if API hasn't loaded yet
   const displayProfile = profile || {
     name: "Loading...",
@@ -541,7 +545,7 @@ const Portfolio = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Home</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-3 sm:mb-4 text-indigo-700 tracking-tight leading-tight px-2">
-            {displayProfile.name || 'Clinton Ageboba'} – Software Developer
+            {displayProfile.name || 'Clinton Ageboba'}
           </h1>
           <p className="text-base sm:text-lg md:text-xl font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-3 sm:mb-4 typewriter px-2">
             SOFTWARE ENGINEER
@@ -605,11 +609,20 @@ const Portfolio = () => {
             {/* About Text Card */}
             <div className="bg-white/90 backdrop-blur-xl rounded-2xl sm:rounded-[28px] shadow-2xl border border-indigo-100 px-4 sm:px-6 md:px-10 py-6 sm:py-8 md:py-10">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">
-                    {displayProfile.name.split(' ').map(n => n[0]).join('').substring(0, 2) || 'ME'}
-                  </span>
-                </div>
+                {profileImageUrl ? (
+                  <img
+                    src={profileImageUrl}
+                    alt={displayProfile.name || 'Profile picture'}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-indigo-200"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">
+                      {displayProfile.name.split(' ').map(n => n[0]).join('').substring(0, 2) || 'ME'}
+                    </span>
+                  </div>
+                )}
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">{displayProfile.name}</h3>
                   <p className="text-sm text-indigo-600 font-medium">{displayProfile.title}</p>
@@ -630,6 +643,19 @@ const Portfolio = () => {
                   meet client needs and business objectives. Whether you're a recruiter looking for talent, a business 
                   seeking development services, or a student interested in learning, I'm here to help bring your ideas to life.
                 </p>
+                {resumeUrl && (
+                  <div className="pt-2">
+                    <a
+                      href={resumeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-md transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span>View / Download Resume</span>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
 

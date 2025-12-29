@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 
 class Profile(models.Model):
     name = models.CharField(max_length=200)
@@ -12,7 +13,12 @@ class Profile(models.Model):
     linkedin = models.URLField(blank=True)
     twitter = models.URLField(blank=True)
     profile_image = models.ImageField(upload_to='profile/', blank=True)
-    resume = models.FileField(upload_to='resume/', blank=True)
+    resume = models.FileField(
+        upload_to='resume/',
+        blank=True,
+        validators=[FileExtensionValidator(allowed_extensions=['pdf'])],
+        help_text="Upload your resume as a PDF document."
+    )
     
     def __str__(self):
         return self.name
