@@ -632,17 +632,6 @@ const Portfolio = () => {
                 <p>
                   {displayProfile.about || displayProfile.bio}
                 </p>
-                <p>
-                  I am a software developer focused on building efficient, scalable, and user-friendly web applications. 
-                  I work with modern technologies including React, Django, Python, and JavaScript to deliver solutions 
-                  for individuals, startups, and organizations. My expertise spans full-stack development, creating 
-                  responsive web applications, and implementing robust backend systems.
-                </p>
-                <p>
-                  I specialize in developing portfolio websites, web applications, and scalable software solutions that 
-                  meet client needs and business objectives. Whether you're a recruiter looking for talent, a business 
-                  seeking development services, or a student interested in learning, I'm here to help bring your ideas to life.
-                </p>
                 {resumeUrl && (
                   <div className="pt-2">
                     <a
